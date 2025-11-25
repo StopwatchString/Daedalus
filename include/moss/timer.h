@@ -97,8 +97,6 @@ class Rolling
 public:
 
 
-
-
     Rolling(const Rolling&) = default;
     Rolling(Rolling&&) = default;
     Rolling& operator=(const Rolling&) = default;

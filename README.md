@@ -20,4 +20,4 @@ Contains both self-created utilities and 3rd party utilities that I think are wo
 
 # third party
 
-## `moss/boost_unordered.hpp` https://github.com/MikePopoloski/boost_unordered
+## [`moss/boost_unordered.hpp`](https://github.com/MikePopoloski/boost_unordered)

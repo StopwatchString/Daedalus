@@ -4,7 +4,7 @@ project(Daedalus LANGUAGES CXX)
 
 add_library(daedalus
     ${CMAKE_CURRENT_SOURCE_DIR}/src/fileio.cpp
-    ${CMAKE_CURRENT_SOURCE-DIR}/src/str_utils.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/str_utils.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/timer.cpp
 )
 

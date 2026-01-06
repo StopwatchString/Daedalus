@@ -47,6 +47,15 @@ namespace str_utils
  */
 [[nodiscard]] std::string_view trim(std::string_view sv);
 
+/**
+ * @brief Checks if a string is entirely whitespace.
+ *
+ * @param sv The string view to check for whitespace.
+ *
+ * @return True if the string is entirely whitespace, false otherwise.
+ */
+[[nodiscard]] bool is_all_whitespace(const std::string_view sv);
+
 } // namespace str_utils
 } // namespace daedalus
 

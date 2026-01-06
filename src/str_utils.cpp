@@ -1,5 +1,8 @@
 #include "daedalus/str_utils.h"
 
+#include <algorithm>
+#include <cctype>
+
 namespace daedalus
 {
 namespace str_utils
@@ -37,5 +40,11 @@ std::string_view trim(std::string_view sv)
     size_t back = sv.find_last_not_of(space_characters);
     return sv.substr(front, back - front + 1);
 }
+
+bool is_all_whitespace(const std::string_view sv)
+{
+    return std::all_of(sv.begin(), sv.end(), [](unsigned char c) { return std::isspace(c); });
+}
+
 } // namespace str_utils
 } // namespace daedalus

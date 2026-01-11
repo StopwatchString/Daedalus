@@ -32,6 +32,15 @@ struct File
  */
 [[nodiscard]] std::optional<File> load_file(std::string_view file_path);
 
+/**
+ * @brief Checks that a string represents a potentially real directory path, such that create_directories would succeed
+ * if called on it.
+ *
+ * @param directory_path The input directory path to check.
+ *
+ * @return True if the directory path could be created, false otherwise.
+ */
+[[nodiscard]] bool is_usable_directory_path(std::string_view directory_path);
 } // namespace fileio
 } // namespace daedalus
 

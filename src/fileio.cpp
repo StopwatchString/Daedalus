@@ -1,5 +1,6 @@
 #include "daedalus/fileio.h"
 
+#include <filesystem>
 #include <fstream>
 
 namespace daedalus
@@ -29,6 +30,35 @@ std::optional<File> load_file(std::string_view file)
     }
 
     return File{.buf = std::move(buf), .size = static_cast<size_t>(size)};
+}
+
+bool is_usable_directory_path(std::string_view directory_path)
+{
+    if (directory_path.empty())
+        return false;
+
+    try
+    {
+        std::filesystem::path path(directory_path);
+
+        if (std::filesystem::exists(path))
+        {
+            return std::filesystem::is_directory(path);
+        }
+
+        // Check that the nearest existing ancestor is a directory
+        std::filesystem::path ancestor = path;
+        while (!ancestor.empty() && !std::filesystem::exists(ancestor))
+        {
+            ancestor = ancestor.parent_path();
+        }
+
+        return ancestor.empty() || std::filesystem::is_directory(ancestor);
+    }
+    catch (const std::filesystem::filesystem_error&)
+    {
+        return false;
+    }
 }
 
 } // namespace fileio

@@ -3,6 +3,14 @@
 #include <algorithm>
 #include <cctype>
 
+#ifdef _WIN32
+
+#define WIN32_LEAN_AND_MEAN
+#define NOMINMAX
+#include <windows.h>
+
+#endif
+
 namespace daedalus
 {
 namespace str_utils
@@ -45,6 +53,27 @@ bool is_all_whitespace(const std::string_view sv)
 {
     return std::all_of(sv.begin(), sv.end(), [](unsigned char c) { return std::isspace(c); });
 }
+
+#if defined(_WIN32)
+
+std::wstring to_wide(std::string_view sv)
+{
+    if (sv.empty())
+    {
+        return {};
+    }
+
+    // Check what size is needed first, then preallocate enough space
+    int size = MultiByteToWideChar(CP_UTF8, 0, sv.data(), (int)sv.size(), nullptr, 0);
+    std::wstring wide_string(size, 0);
+
+    // The actual call
+    MultiByteToWideChar(CP_UTF8, 0, sv.data(), (int)sv.size(), wide_string.data(), size);
+
+    return wide_string;
+}
+
+#endif
 
 } // namespace str_utils
 } // namespace daedalus

@@ -1,6 +1,7 @@
 #ifndef DAEDALUS_STR_UTILS_H
 #define DAEDALUS_STR_UTILS_H
 
+#include <string>
 #include <string_view>
 #include <vector>
 
@@ -55,6 +56,19 @@ namespace str_utils
  * @return True if the string is entirely whitespace, false otherwise.
  */
 [[nodiscard]] bool is_all_whitespace(const std::string_view sv);
+
+#ifdef _WIN32
+/**
+ * @brief Converts a string to a Windows wide string.
+ *
+ * @note This function makes a copy of the string.
+ *
+ * @param sv The string view to convert.
+ *
+ * @return std::wstring containing the wide string.
+ */
+[[nodiscard]] std::wstring to_wide(std::string_view sv);
+#endif
 
 } // namespace str_utils
 } // namespace daedalus

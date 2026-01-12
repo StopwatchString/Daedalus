@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 4.0.0)
 project(Daedalus LANGUAGES CXX)
 
 add_library(daedalus
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/affinity.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/thread_utils.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/fileio.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/str_utils.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/timer.cpp

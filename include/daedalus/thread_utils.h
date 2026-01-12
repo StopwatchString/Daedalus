@@ -1,14 +1,13 @@
-#ifndef DAEDALUS_AFFINITY_H
-#define DAEDALUS_AFFINITY_H
-
-#include "daedalus/types.h"
+#ifndef DAEDALUS_THREAD_UTILS_H
+#define DAEDALUS_THREAD_UTILS_H
 
 #include <span>
+#include <string_view>
 #include <thread>
 
 namespace daedalus
 {
-namespace affinity
+namespace thread_utils
 {
 /**
  * @brief Attempts to set the logical processor affinity of the given thread.
@@ -35,9 +34,19 @@ namespace affinity
  * @return True if setting affinity was reported successful by the Operating System (this does not necessarily guarantee
  * expected behavior).
  */
-bool set_thread_logical_processor_affinity(std::thread& thread,
-                                           std::span<daedalus::primitives::u16> target_logical_processor_ids);
-} // namespace affinity
+bool set_thread_logical_processor_affinity(std::thread& thread, std::span<uint16_t> target_logical_processor_ids);
+
+/**
+ * @brief Attempts to set the string name associated with a thread at the operating system level.
+ *
+ * @param thread The std::thread to attempt to set the name of.
+ * @param name The name to attempt to set on the thread.
+ *
+ * @return True if the thread's name was reported successfully set by the operating system.
+ */
+bool set_thread_name(std::thread& thread, std::string_view name);
+
+} // namespace thread_utils
 } // namespace daedalus
 
 #endif

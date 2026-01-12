@@ -34,7 +34,7 @@ bool set_thread_logical_processor_affinity(std::thread& thread, std::span<uint16
 bool set_thread_name(std::thread& thread, std::string_view name)
 {
     HRESULT hResult = SetThreadDescription(thread.native_handle(), daedalus::str_utils::to_wide(name).c_str());
-    return hResult == S_OK;
+    return SUCCEEDED(hResult);
 }
 
 #elif define(__linux__)

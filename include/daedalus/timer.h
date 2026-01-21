@@ -3,9 +3,7 @@
 
 #include <chrono>
 
-namespace daedalus
-{
-namespace timer
+namespace daedalus::timer
 {
 static constexpr double NANOSECONDS_PER_MICROSECOND = 1'000.0;
 static constexpr double NANOSECONDS_PER_MILLISECOND = 1'000'000.0;
@@ -19,7 +17,7 @@ class Immutable
         start = std::chrono::steady_clock::now();
     }
 
-    [[nodiscard]] double getSeconds() const noexcept
+    [[nodiscard]] auto getSeconds() const noexcept -> double
     {
         return (std::chrono::steady_clock::now() - start).count() / NANOSECONDS_PER_SECOND;
     }
@@ -39,10 +37,10 @@ class Immutable
         return (std::chrono::steady_clock::now() - start).count();
     }
 
-    Immutable(const Immutable &) = default;
-    Immutable(Immutable &&) = default;
-    Immutable &operator=(const Immutable &) = default;
-    Immutable &operator=(Immutable &&) = default;
+    Immutable(const Immutable&) = default;
+    Immutable(Immutable&&) = default;
+    Immutable& operator=(const Immutable&) = default;
+    Immutable& operator=(Immutable&&) = default;
 
   private:
     std::chrono::steady_clock::time_point start{};
@@ -81,16 +79,15 @@ class Resettable
         return (std::chrono::steady_clock::now() - start).count();
     }
 
-    Resettable(const Resettable &) = default;
-    Resettable(Resettable &&) = default;
-    Resettable &operator=(const Resettable &) = default;
-    Resettable &operator=(Resettable &&) = default;
+    Resettable(const Resettable&) = default;
+    Resettable(Resettable&&) = default;
+    auto operator=(const Resettable&) -> Resettable& = default;
+    auto operator=(Resettable&&) -> Resettable& = default;
 
   private:
     std::chrono::steady_clock::time_point start{};
 };
 
-} // namespace timer
-} // namespace daedalus
+} // namespace daedalus::timer
 
 #endif

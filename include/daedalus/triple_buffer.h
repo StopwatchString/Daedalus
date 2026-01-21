@@ -12,7 +12,7 @@ class TripleBuffer
 {
 
   public:
-    T& get_for_writer()
+    auto get_for_writer() -> T&
     {
         return buffers[back_idx];
     }
@@ -24,7 +24,7 @@ class TripleBuffer
         back_idx = prev_spare.idx;
     }
 
-    std::pair<T&, bool> get_for_reader()
+    auto get_for_reader() -> std::pair<T&, bool>
     {
         State curr_spare = spare.load(std::memory_order_relaxed);
         bool updated = curr_spare.has_update;
@@ -57,7 +57,7 @@ class TripleBufferReader
   public:
     TripleBufferReader(TripleBuffer<T>& triple_buffer) : instance(triple_buffer) {};
 
-    std::pair<T&, bool> read()
+    auto read() -> std::pair<T&, bool>
     {
         return instance.get_for_reader();
     }
@@ -95,7 +95,7 @@ class ZeroShareTripleBuffer
     };
 
   public:
-    T& get_for_writer()
+    auto get_for_writer() -> T&
     {
         return buffers[back_idx].value;
     }
@@ -107,7 +107,7 @@ class ZeroShareTripleBuffer
         back_idx = prev_spare.idx;
     }
 
-    std::pair<T&, bool> get_for_reader()
+    auto get_for_reader() -> std::pair<T&, bool>
     {
         State curr_spare = spare.load(std::memory_order_relaxed);
         bool updated = curr_spare.has_update;
@@ -140,7 +140,7 @@ class ZeroShareTripleBufferReader
   public:
     ZeroShareTripleBufferReader(ZeroShareTripleBuffer<T>& triple_buffer) : instance(triple_buffer) {};
 
-    std::pair<T&, bool> read()
+    auto read() -> std::pair<T&, bool>
     {
         return instance.get_for_reader();
     }

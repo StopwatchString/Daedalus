@@ -2,9 +2,7 @@
 
 #include "daedalus/str_utils.h"
 
-namespace daedalus
-{
-namespace thread_utils
+namespace daedalus::thread_utils
 {
 
 #ifdef _WIN32
@@ -13,7 +11,9 @@ namespace thread_utils
 #define NOMINMAX
 #include <windows.h>
 
-DWORD_PTR make_logical_processor_affinity_mask(std::span<uint16_t> target_logical_processor_ids)
+namespace
+{
+auto make_logical_processor_affinity_mask(std::span<uint16_t> target_logical_processor_ids) -> DWORD_PTR
 {
     DWORD_PTR mask = 0;
     for (uint16_t id : target_logical_processor_ids)
@@ -22,8 +22,10 @@ DWORD_PTR make_logical_processor_affinity_mask(std::span<uint16_t> target_logica
     }
     return mask;
 }
+} // namespace
 
-bool set_thread_logical_processor_affinity(std::thread& thread, std::span<uint16_t> target_logical_processor_ids)
+auto set_thread_logical_processor_affinity(std::thread& thread, std::span<uint16_t> target_logical_processor_ids)
+    -> bool
 {
     DWORD_PTR target_mask = make_logical_processor_affinity_mask(target_logical_processor_ids);
 
@@ -31,7 +33,7 @@ bool set_thread_logical_processor_affinity(std::thread& thread, std::span<uint16
     return prev_mask != 0;
 }
 
-bool set_thread_name(std::thread& thread, std::string_view name)
+auto set_thread_name(std::thread& thread, std::string_view name) -> bool
 {
     HRESULT hResult = SetThreadDescription(thread.native_handle(), daedalus::str_utils::to_wide(name).c_str());
     return SUCCEEDED(hResult);
@@ -43,5 +45,4 @@ bool set_thread_name(std::thread& thread, std::string_view name)
 
 #endif
 
-} // namespace thread_utils
-} // namespace daedalus
+} // namespace daedalus::thread_utils

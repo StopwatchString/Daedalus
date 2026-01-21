@@ -11,11 +11,9 @@
 
 #endif
 
-namespace daedalus
+namespace daedalus::str_utils
 {
-namespace str_utils
-{
-std::string_view get_line(const char* str, size_t max_search_size, char delim)
+auto get_line(const char* str, size_t max_search_size, char delim) -> std::string_view
 {
     const char* endl = reinterpret_cast<const char*>(std::memchr(str, delim, max_search_size));
     if (endl == nullptr)
@@ -25,7 +23,7 @@ std::string_view get_line(const char* str, size_t max_search_size, char delim)
     return std::string_view(str, endl - str);
 }
 
-std::vector<std::string_view> split(const char* buf, size_t size, char delim)
+auto split(const char* buf, size_t size, char delim) -> std::vector<std::string_view>
 {
     const char* front = buf;
     const char* back = buf + size;
@@ -39,7 +37,7 @@ std::vector<std::string_view> split(const char* buf, size_t size, char delim)
     return svs;
 }
 
-std::string_view trim(std::string_view sv)
+auto trim(std::string_view sv) -> std::string_view
 {
     static const char* space_characters = " \t\n\v\f\r";
     size_t front = sv.find_first_not_of(space_characters);
@@ -49,14 +47,14 @@ std::string_view trim(std::string_view sv)
     return sv.substr(front, back - front + 1);
 }
 
-bool is_all_whitespace(const std::string_view sv)
+auto is_all_whitespace(const std::string_view sv) -> bool
 {
-    return std::all_of(sv.begin(), sv.end(), [](unsigned char c) { return std::isspace(c); });
+    return std::ranges::all_of(sv, [](unsigned char c) { return std::isspace(c); });
 }
 
 #if defined(_WIN32)
 
-std::wstring to_wide(std::string_view sv)
+auto to_wide(std::string_view sv) -> std::wstring
 {
     if (sv.empty())
     {
@@ -75,5 +73,4 @@ std::wstring to_wide(std::string_view sv)
 
 #endif
 
-} // namespace str_utils
-} // namespace daedalus
+} // namespace daedalus::str_utils

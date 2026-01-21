@@ -5,9 +5,7 @@
 #include <string_view>
 #include <thread>
 
-namespace daedalus
-{
-namespace thread_utils
+namespace daedalus::thread_utils
 {
 /**
  * @brief Attempts to set the logical processor affinity of the given thread.
@@ -34,7 +32,8 @@ namespace thread_utils
  * @return True if setting affinity was reported successful by the Operating System (this does not necessarily guarantee
  * expected behavior).
  */
-bool set_thread_logical_processor_affinity(std::thread& thread, std::span<uint16_t> target_logical_processor_ids);
+auto set_thread_logical_processor_affinity(std::thread& thread, std::span<uint16_t> target_logical_processor_ids)
+    -> bool;
 
 /**
  * @brief Attempts to set the string name associated with a thread at the operating system level.
@@ -44,9 +43,8 @@ bool set_thread_logical_processor_affinity(std::thread& thread, std::span<uint16
  *
  * @return True if the thread's name was reported successfully set by the operating system.
  */
-bool set_thread_name(std::thread& thread, std::string_view name);
+auto set_thread_name(std::thread& thread, std::string_view name) -> bool;
 
-} // namespace thread_utils
-} // namespace daedalus
+} // namespace daedalus::thread_utils
 
 #endif

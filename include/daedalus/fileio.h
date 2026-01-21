@@ -7,9 +7,7 @@
 #include <optional>
 #include <string_view>
 
-namespace daedalus
-{
-namespace fileio
+namespace daedalus::fileio
 {
 
 /**
@@ -17,7 +15,7 @@ namespace fileio
  */
 struct File
 {
-    std::unique_ptr<char[]> buf;
+    std::unique_ptr<char[]> buf; // NOLINT
     daedalus::primitives::u64 size{0};
 };
 
@@ -30,7 +28,7 @@ struct File
  *
  * @return File struct on success, or std::nullopt on failure.
  */
-[[nodiscard]] std::optional<File> load_file(std::string_view file_path);
+[[nodiscard]] auto load_file(std::string_view file_path) -> std::optional<File>;
 
 /**
  * @brief Checks that a string represents a potentially real directory path, such that create_directories would succeed
@@ -40,8 +38,8 @@ struct File
  *
  * @return True if the directory path could be created, false otherwise.
  */
-[[nodiscard]] bool is_usable_directory_path(std::string_view directory_path);
-} // namespace fileio
-} // namespace daedalus
+[[nodiscard]] auto is_usable_directory_path(std::string_view directory_path) -> bool;
+
+} // namespace daedalus::fileio
 
 #endif

@@ -5,9 +5,7 @@
 #include <string_view>
 #include <vector>
 
-namespace daedalus
-{
-namespace str_utils
+namespace daedalus::str_utils
 {
 
 /**
@@ -23,7 +21,7 @@ namespace str_utils
  *
  * @return A std::string_view of the first line encountered.
  */
-[[nodiscard]] std::string_view get_line(const char* str, size_t max_search_size, char delim);
+[[nodiscard]] auto get_line(const char* str, size_t max_search_size, char delim) -> std::string_view;
 
 /**
  * @brief Splits a char buffer into a vector of string_views based on a given delimiter.
@@ -37,7 +35,7 @@ namespace str_utils
  *
  * @return A vector of string_views based on buf.
  */
-[[nodiscard]] std::vector<std::string_view> split(const char* buf, size_t size, char delim);
+[[nodiscard]] auto split(const char* buf, size_t size, char delim) -> std::vector<std::string_view>;
 
 /**
  * @brief Removes the whitespace from the front and back of a string_view.
@@ -46,7 +44,7 @@ namespace str_utils
  *
  * @return A string_view of the passed in string without whitespace in the front or back.
  */
-[[nodiscard]] std::string_view trim(std::string_view sv);
+[[nodiscard]] auto trim(std::string_view sv) -> std::string_view;
 
 /**
  * @brief Checks if a string is entirely whitespace.
@@ -55,7 +53,7 @@ namespace str_utils
  *
  * @return True if the string is entirely whitespace, false otherwise.
  */
-[[nodiscard]] bool is_all_whitespace(const std::string_view sv);
+[[nodiscard]] auto is_all_whitespace(const std::string_view sv) -> bool;
 
 #ifdef _WIN32
 /**
@@ -67,10 +65,9 @@ namespace str_utils
  *
  * @return std::wstring containing the wide string.
  */
-[[nodiscard]] std::wstring to_wide(std::string_view sv);
+[[nodiscard]] auto to_wide(std::string_view sv) -> std::wstring;
 #endif
 
-} // namespace str_utils
-} // namespace daedalus
+} // namespace daedalus::str_utils
 
 #endif

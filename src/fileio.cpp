@@ -3,12 +3,10 @@
 #include <filesystem>
 #include <fstream>
 
-namespace daedalus
-{
-namespace fileio
+namespace daedalus::fileio
 {
 
-std::optional<File> load_file(std::string_view file)
+auto load_file(std::string_view file) -> std::optional<File>
 {
     // Open file
     std::ifstream f(std::string(file), std::ios::binary | std::ios::ate);
@@ -22,7 +20,7 @@ std::optional<File> load_file(std::string_view file)
 
     f.seekg(0, std::ios::beg);
 
-    std::unique_ptr<char[]> buf = std::make_unique<char[]>(size);
+    std::unique_ptr<char[]> buf = std::make_unique<char[]>(size); // NOLINT
 
     if (!f.read(buf.get(), size))
     {
@@ -32,7 +30,7 @@ std::optional<File> load_file(std::string_view file)
     return File{.buf = std::move(buf), .size = static_cast<size_t>(size)};
 }
 
-bool is_usable_directory_path(std::string_view directory_path)
+auto is_usable_directory_path(std::string_view directory_path) -> bool
 {
     if (directory_path.empty())
         return false;
@@ -61,5 +59,4 @@ bool is_usable_directory_path(std::string_view directory_path)
     }
 }
 
-} // namespace fileio
-} // namespace daedalus
+} // namespace daedalus::fileio

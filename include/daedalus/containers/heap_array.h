@@ -1,15 +1,15 @@
-#ifndef DAEDALUS_CONTAINERS_HEAP_ARRAY_H
-#define DAEDALUS_CONTAINERS_HEAP_ARRAY_H
+// #ifndef DAEDALUS_CONTAINERS_HEAP_ARRAY_H
+// #define DAEDALUS_CONTAINERS_HEAP_ARRAY_H
 
-#include "daedalus/containers/array_interface.h"
+// #include "daedalus/containers/array_interface.h"
 
-namespace daedalus::containers
-{
+// namespace daedalus::containers
+// {
 
-class heap_array : public array_interface
-{
-};
+// class heap_array : public array_interface
+// {
+// };
 
-} // namespace daedalus::containers
+// } // namespace daedalus::containers
 
-#endif
+// #endif

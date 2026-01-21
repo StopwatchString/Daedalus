@@ -1,15 +1,15 @@
-#ifndef DAEDALUS_CONTAINERS_HEAP_VECTOR_H
-#define DAEDALUS_CONTAINERS_HEAP_VECTOR_H
+// #ifndef DAEDALUS_CONTAINERS_HEAP_VECTOR_H
+// #define DAEDALUS_CONTAINERS_HEAP_VECTOR_H
 
-#include "daedalus/containers/vector_interface.h"
+// #include "daedalus/containers/vector_interface.h"
 
-namespace daedalus::containers
-{
+// namespace daedalus::containers
+// {
 
-class heap_vector : public vector_interface
-{
-};
+// class heap_vector : public vector_interface
+// {
+// };
 
-} // namespace daedalus::containers
+// } // namespace daedalus::containers
 
-#endif
+// #endif

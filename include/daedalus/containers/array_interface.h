@@ -63,6 +63,22 @@ class array_interface
         }
     }
 
+    auto destroy_at(size_t index) -> void
+    {
+        if constexpr (MMode == ManagementMode::Managed)
+        {
+            if (element_is_init(index))
+            {
+                std::destroy_at(laundered_element_ptr(index));
+            }
+            set_element_init_state(index, false);
+        }
+        else
+        {
+            std::destroy_at(laundered_element_ptr(index));
+        }
+    }
+
     auto copy_from(size_t index) const -> T
     {
         return *laundered_element_ptr(index);

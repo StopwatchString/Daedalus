@@ -1,8 +1,6 @@
 #ifndef DAEDALUS_TRIPLE_BUFFER_H
 #define DAEDALUS_TRIPLE_BUFFER_H
 
-#include "daedalus/types.h"
-
 #include <atomic>
 #include <new>
 #include <utility>
@@ -40,15 +38,15 @@ class TripleBuffer
   private:
     struct State
     {
-        daedalus::primitives::u32 idx{0};
+        uint32_t idx{0};
         bool has_update{false};
     };
     static_assert(std::atomic<State>::is_always_lock_free);
 
     T buffers[3];
-    alignas(std::hardware_destructive_interference_size) daedalus::primitives::u64 front_idx{0};
+    alignas(std::hardware_destructive_interference_size) uint64_t front_idx{0};
     alignas(std::hardware_destructive_interference_size) std::atomic<State> spare{{1, false}};
-    alignas(std::hardware_destructive_interference_size) daedalus::primitives::u64 back_idx{2};
+    alignas(std::hardware_destructive_interference_size) uint64_t back_idx{2};
 };
 
 template <typename T>
@@ -123,15 +121,15 @@ class ZeroShareTripleBuffer
   private:
     struct State
     {
-        daedalus::primitives::u32 idx{0};
+        uint32_t idx{0};
         bool has_update{false};
     };
     static_assert(std::atomic<State>::is_always_lock_free);
 
     CacheLineAlignedData buffers[3];
-    alignas(std::hardware_destructive_interference_size) daedalus::primitives::u64 front_idx{0};
+    alignas(std::hardware_destructive_interference_size) uint64_t front_idx{0};
     alignas(std::hardware_destructive_interference_size) std::atomic<State> spare{{1, false}};
-    alignas(std::hardware_destructive_interference_size) daedalus::primitives::u64 back_idx{2};
+    alignas(std::hardware_destructive_interference_size) uint64_t back_idx{2};
 };
 
 template <typename T>

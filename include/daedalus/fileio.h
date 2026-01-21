@@ -1,8 +1,6 @@
 #ifndef DAEDALUS_FILE_IO_H
 #define DAEDALUS_FILE_IO_H
 
-#include "types.h"
-
 #include <memory>
 #include <optional>
 #include <string_view>
@@ -16,7 +14,7 @@ namespace daedalus::fileio
 struct File
 {
     std::unique_ptr<char[]> buf; // NOLINT
-    daedalus::primitives::u64 size{0};
+    uint64_t size{0};
 };
 
 /**

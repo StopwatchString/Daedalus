@@ -15,7 +15,6 @@ set(DAEDALUS_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/thread_utils.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/timer.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/triple_buffer.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/types.h
 )
 
 set(DAEDALUS_SOURCES

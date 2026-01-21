@@ -2,3 +2,41 @@ Language: Cpp
 BasedOnStyle: Microsoft
 PointerAlignment: Left
 AlwaysBreakTemplateDeclarations: Yes
+AllowAllArgumentsOnNextLine: No
+BinPackParameters: false
+BinPackArguments: false
+ShortNamespaceLines: 0
+
+# Automatically groups and sorts includes in every file via regex
+# 0) Corresponding Header (if applicable)
+# 1) Daedalus Library Headers
+# 2) Third Party Headers
+# 3) System Headers
+# 4) STL Headers
+IncludeCategories:
+    # Group 1: Daedalus Library Headers
+    - Regex: '^"daedalus/.*"$'
+      Priority: 1
+      CaseSensitive: false
+
+    # Group 2: All non-Aether external library headers in quotes
+    # Should resolve to everything in /external/ in practice
+    - Regex: '^".*"$'
+      Priority: 2
+      CaseSensitive: false
+
+    # Group 3: System headers
+    # This list must be updated as more system headers are needed
+    - Regex: "^<(windows).*>$"
+      Priority: 3
+      CaseSensitive: false
+
+    # Group 4: STL
+    # Everything in <> that isn't in the Systems header group is expected
+    # to be standard library.
+    - Regex: "^<.*>$"
+      Priority: 4
+      CaseSensitive: false
+
+# Allows IncludeCategories to move includes between groups
+IncludeBlocks: Regroup

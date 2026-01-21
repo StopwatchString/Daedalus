@@ -33,6 +33,14 @@ auto set_thread_logical_processor_affinity(std::thread& thread, std::span<uint16
     return prev_mask != 0;
 }
 
+auto set_this_thread_logical_processor_affinity(std::span<uint16_t> target_logical_processor_ids) -> bool
+{
+    DWORD_PTR target_mask = make_logical_processor_affinity_mask(target_logical_processor_ids);
+
+    DWORD_PTR prev_mask = SetThreadAffinityMask(GetCurrentThread(), target_mask);
+    return prev_mask != 0;
+}
+
 auto set_thread_name(std::thread& thread, std::string_view name) -> bool
 {
     HRESULT hResult = SetThreadDescription(thread.native_handle(), daedalus::str_utils::to_wide(name).c_str());

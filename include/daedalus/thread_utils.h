@@ -35,6 +35,8 @@ namespace daedalus::thread_utils
 auto set_thread_logical_processor_affinity(std::thread& thread, std::span<uint16_t> target_logical_processor_ids)
     -> bool;
 
+auto set_this_thread_logical_processor_affinity(std::span<uint16_t> target_logical_processor_ids) -> bool;
+
 /**
  * @brief Attempts to set the string name associated with a thread at the operating system level.
  *

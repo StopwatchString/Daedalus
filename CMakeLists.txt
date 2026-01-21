@@ -10,6 +10,7 @@ set(DAEDALUS_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/containers/stack_array.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/containers/stack_vector.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/containers/vector_interface.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/attributes.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/fileio.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/str_utils.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/daedalus/thread_utils.h

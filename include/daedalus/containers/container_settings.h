@@ -9,7 +9,7 @@ namespace daedalus::containers
 enum class ManagementMode : uint8_t
 {
     // Container should not manage anything for the user. Destructors will not be called.
-    Manual,
+    Unmanaged,
     // Container will track what elements have been populated and call destructors on overwrite and on container
     // destructor.
     Managed

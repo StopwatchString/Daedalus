@@ -18,11 +18,15 @@ class stack_array : public array_interface<stack_array<T, Capacity, MMode>, T, M
     {
         bool states[Capacity]{false}; // NOLINT
     };
-
     using TrackingData = std::conditional_t<MMode == ManagementMode::Managed, ManagedTracking, ManualTracking>;
 
   public:
     [[nodiscard]] auto data() -> std::byte*
+    {
+        return &buffer[0];
+    };
+
+    [[nodiscard]] auto data() const -> const std::byte*
     {
         return &buffer[0];
     };
@@ -33,7 +37,7 @@ class stack_array : public array_interface<stack_array<T, Capacity, MMode>, T, M
     }
 
   private:
-    [[nodiscard]] auto element_is_init(size_t index) -> bool
+    [[nodiscard]] auto element_is_init(size_t index) const -> bool
     {
         if constexpr (MMode == ManagementMode::Managed)
         {

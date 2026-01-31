@@ -16,4 +16,10 @@ auto load_file_async(std::string_view file, FileLoadStrategy load_strategy)
     std::cerr << "daedalus::fileio::load_file_async() UNIMPLEMENTED ON LINUX \n";
     return std::nullopt;
 }
+
+auto get_file_meta_data(std::string_view file) -> std::optional<FileMetaData>
+{
+    std::cerr << "daedalus::fileio::get_file_meta_data() UNIMPLEMENTED ON LINUX \n";
+    return std::nullopt;
+}
 } // namespace daedalus::fileio

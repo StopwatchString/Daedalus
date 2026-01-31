@@ -15,23 +15,20 @@ namespace daedalus::str_utils
 {
 auto get_line(const char* str, size_t max_search_size, char delim) -> std::string_view
 {
-    const char* endl = reinterpret_cast<const char*>(std::memchr(str, delim, max_search_size));
-    if (endl == nullptr)
-    {
-        endl = str + max_search_size;
-    }
-    return std::string_view(str, endl - str);
+    const char* endl = static_cast<const char*>(std::memchr(str, delim, max_search_size));
+    const size_t len = endl != nullptr ? static_cast<size_t>(endl - str) : max_search_size;
+    return {str, len};
 }
 
-auto split(const char* buf, size_t size, char delim) -> std::vector<std::string_view>
+auto split(const char* buf, size_t size, char delim) -> std::vector<std::string_view> // NOLINT
 {
     const char* front = buf;
-    const char* back = buf + size;
+    const char* back = buf + size; // NOLINT
     std::vector<std::string_view> svs;
     while (front < back)
     {
         std::string_view s = get_line(front, back - front, delim);
-        front += s.size() + 1;
+        front += s.size() + 1; // NOLINT
         svs.push_back(s);
     }
     return svs;
@@ -49,7 +46,7 @@ auto trim(std::string_view sv) -> std::string_view
 
 auto is_all_whitespace(const std::string_view sv) -> bool
 {
-    return std::ranges::all_of(sv, [](unsigned char c) { return std::isspace(c); });
+    return std::ranges::all_of(sv, [](unsigned char c) -> int { return std::isspace(c); });
 }
 
 #if defined(_WIN32)

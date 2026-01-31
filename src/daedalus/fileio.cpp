@@ -1,33 +1,25 @@
 #include "daedalus/fileio.h"
 
 #include <filesystem>
-#include <fstream>
+#include <new>
+#include <utility>
 
 namespace daedalus::fileio
 {
 
-auto load_file(std::string_view file) -> std::optional<File>
+auto free_file(File& file) -> void
 {
-    // Open file
-    std::ifstream f(std::string(file), std::ios::binary | std::ios::ate);
-    if (!f.is_open())
-        return std::nullopt;
-
-    // File size
-    std::streamsize size = f.tellg();
-    if (size <= 0)
-        return std::nullopt;
-
-    f.seekg(0, std::ios::beg);
-
-    std::unique_ptr<char[]> buf = std::make_unique<char[]>(size); // NOLINT
-
-    if (!f.read(buf.get(), size))
+    switch (file.allocation_type)
     {
-        return std::nullopt;
+    case AllocationType::Aligned:
+        ::operator delete(file.buffer, std::align_val_t(file.alignment));
+        break;
+    case AllocationType::Unaligned:
+        ::operator delete(file.buffer);
+        break;
+    default:
+        std::unreachable();
     }
-
-    return File{.buf = std::move(buf), .size = static_cast<size_t>(size)};
 }
 
 auto is_usable_directory_path(std::string_view directory_path) -> bool

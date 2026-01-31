@@ -7,6 +7,10 @@ BinPackParameters: false
 BinPackArguments: false
 ShortNamespaceLines: 0
 
+# Allows platform-specific suffixes on implementation files to
+# consider their primary header as the non-suffixed variant
+IncludeIsMainRegex: "(_windows|_linux)?$"
+
 # Automatically groups and sorts includes in every file via regex
 # 0) Corresponding Header (if applicable)
 # 1) Daedalus Library Headers

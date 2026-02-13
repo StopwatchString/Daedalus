@@ -10,6 +10,7 @@ set(DAEDALUS_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/stack_array.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/stack_vector.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/vector_interface.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/debugging/Lifetime.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/attributes.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/fileio.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/fileio.cpp

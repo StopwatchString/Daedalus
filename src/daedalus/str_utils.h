@@ -21,7 +21,7 @@ namespace daedalus::str_utils
  *
  * @return A std::string_view of the first line encountered.
  */
-[[nodiscard]] auto get_line(const char* str, size_t max_search_size, char delim) -> std::string_view;
+[[nodiscard]] auto get_line_wide(const char* str, size_t max_search_size, char delim) -> std::string_view;
 
 /**
  * @brief Splits a char buffer into a vector of string_views based on a given delimiter.
@@ -66,6 +66,22 @@ namespace daedalus::str_utils
  * @return std::wstring containing the wide string.
  */
 [[nodiscard]] auto to_wide(std::string_view sv) -> std::wstring;
+
+/**
+ * @brief Converts a Windows wide string to a string.
+ *
+ * @note This function makes a copy of the wide string.
+ *
+ * @param wsv The wide string view to convert.
+ *
+ * @return `std::string` containing the converted string.
+ */
+[[nodiscard]] auto from_wide(std::wstring_view wsv) -> std::string;
+
+[[nodiscard]] auto get_line_wide(const wchar_t* str, size_t max_search_size, wchar_t delim) -> std::wstring_view;
+
+[[nodiscard]] auto split_wide(const wchar_t* buf, size_t size, wchar_t delim) -> std::vector<std::wstring_view>;
+
 #endif
 
 } // namespace daedalus::str_utils

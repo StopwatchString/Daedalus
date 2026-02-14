@@ -68,6 +68,42 @@ auto to_wide(std::string_view sv) -> std::wstring
     return wide_string;
 }
 
+auto from_wide(std::wstring_view sv) -> std::string
+{
+    if (sv.empty())
+    {
+        return {};
+    }
+    // Check what size is needed first, then preallocate enough space
+    int size = WideCharToMultiByte(CP_UTF8, 0, sv.data(), (int)sv.size(), nullptr, 0, nullptr, nullptr);
+    std::string narrow_string(size, 0);
+
+    // The actual call
+    WideCharToMultiByte(CP_UTF8, 0, sv.data(), (int)sv.size(), narrow_string.data(), size, nullptr, nullptr);
+    return narrow_string;
+}
+
+auto get_line_wide(const wchar_t* str, size_t max_search_size, wchar_t delim) -> std::wstring_view
+{
+    const wchar_t* endl = static_cast<const wchar_t*>(std::wmemchr(str, delim, max_search_size));
+    const size_t len = endl != nullptr ? static_cast<size_t>(endl - str) : max_search_size;
+    return {str, len};
+}
+
+auto split_wide(const wchar_t* buf, size_t size, wchar_t delim) -> std::vector<std::wstring_view>
+{
+    const wchar_t* front = buf;
+    const wchar_t* back = buf + size; // NOLINT
+    std::vector<std::wstring_view> svs;
+    while (front < back)
+    {
+        std::wstring_view s = get_line_wide(front, back - front, delim);
+        front += s.size() + 1; // NOLINT
+        svs.push_back(s);
+    }
+    return svs;
+}
+
 #endif
 
 } // namespace daedalus::str_utils

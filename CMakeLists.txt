@@ -25,10 +25,12 @@ set(DAEDALUS_SOURCES
 
 set(DAEDALUS_WINDOWS_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/fileio_windows.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program_windows.cpp
 )
 
 set(DAEDALUS_LINUX_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/fileio_linux.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program_linux.cpp
 )
 
 add_library(daedalus

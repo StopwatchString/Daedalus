@@ -12,6 +12,8 @@
 #include <fstream>
 #include <functional>
 
+// NOLINTBEGIN(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)
+
 namespace daedalus::fileio
 {
 
@@ -133,13 +135,13 @@ auto load_file_standard_library_async(std::string_view file)
  */
 auto load_file_allow_cached(std::string_view file) -> std::optional<File>
 {
-    HANDLE hFile = CreateFileA(file.data(), // NOLINT
+    HANDLE hFile = CreateFileA(file.data(), // NOLINT(bugprone-suspicious-stringview-data-usage)
                                GENERIC_READ,
                                FILE_SHARE_READ,
-                               NULL, // NOLINT(modernize-use-nullptr)
+                               NULL,
                                OPEN_EXISTING,
                                FILE_ATTRIBUTE_NORMAL,
-                               NULL); // NOLINT(modernize-use-nullptr)
+                               NULL);
     if (hFile == INVALID_HANDLE_VALUE)
     {
         return std::nullopt;
@@ -190,10 +192,10 @@ auto load_file_allow_cached_async(std::string_view file)
     HANDLE hFile = CreateFileA(file.data(), // NOLINT(bugprone-suspicious-stringview-data-usage)
                                GENERIC_READ,
                                FILE_SHARE_READ,
-                               NULL, // NOLINT(modernize-use-nullptr)
+                               NULL,
                                OPEN_EXISTING,
                                FILE_FLAG_OVERLAPPED,
-                               NULL); // NOLINT(modernize-use-nullptr)
+                               NULL);
     if (hFile == INVALID_HANDLE_VALUE)
     {
         return std::nullopt;
@@ -215,10 +217,10 @@ auto load_file_allow_cached_async(std::string_view file)
     };
 
     std::unique_ptr<OVERLAPPED> overlapped = std::make_unique<OVERLAPPED>();
-    overlapped->hEvent = CreateEvent(NULL,  // Security Attributes NOLINT(modernize-use-nullptr)
+    overlapped->hEvent = CreateEvent(NULL,  // Security Attributes
                                      TRUE,  // Manual Reset required
                                      FALSE, // Start signaled
-                                     NULL); // Name NOLINT(modernize-use-nullptr)
+                                     NULL); // Name
 
     BOOL result = ReadFile(hFile, f.buffer, static_cast<DWORD>(file_size), NULL, overlapped.get()); // NOLINT
 
@@ -259,13 +261,13 @@ auto load_file_allow_cached_async(std::string_view file)
  */
 auto load_file_safe_direct_disk(std::string_view file) -> std::optional<File>
 {
-    HANDLE hFile = CreateFileA(file.data(), // NOLINT
+    HANDLE hFile = CreateFileA(file.data(), // NOLINT(bugprone-suspicious-stringview-data-usage)
                                GENERIC_READ,
                                FILE_SHARE_READ,
-                               NULL, // NOLINT(modernize-use-nullptr)
+                               NULL,
                                OPEN_EXISTING,
                                FILE_FLAG_NO_BUFFERING,
-                               NULL); // NOLINT(modernize-use-nullptr)
+                               NULL);
     if (hFile == INVALID_HANDLE_VALUE)
     {
         return std::nullopt;
@@ -320,10 +322,10 @@ auto load_file_safe_direct_disk_async(std::string_view file)
     HANDLE hFile = CreateFileA(file.data(), // NOLINT(bugprone-suspicious-stringview-data-usage)
                                GENERIC_READ,
                                FILE_SHARE_READ,
-                               NULL, // NOLINT(modernize-use-nullptr)
+                               NULL,
                                OPEN_EXISTING,
                                FILE_FLAG_OVERLAPPED | FILE_FLAG_NO_BUFFERING,
-                               NULL); // NOLINT(modernize-use-nullptr)
+                               NULL);
     if (hFile == INVALID_HANDLE_VALUE)
     {
         return std::nullopt;
@@ -350,10 +352,10 @@ auto load_file_safe_direct_disk_async(std::string_view file)
     };
 
     std::unique_ptr<OVERLAPPED> overlapped = std::make_unique<OVERLAPPED>();
-    overlapped->hEvent = CreateEvent(NULL,  // Security Attributes NOLINT(modernize-use-nullptr)
+    overlapped->hEvent = CreateEvent(NULL,  // Security Attributes
                                      TRUE,  // Manual Reset required
                                      FALSE, // Start signaled
-                                     NULL); // Name NOLINT(modernize-use-nullptr)
+                                     NULL); // Name
 
     BOOL result = ReadFile(hFile, f.buffer, static_cast<DWORD>(file_size), NULL, overlapped.get()); // NOLINT
 
@@ -420,13 +422,13 @@ auto load_file_async(std::string_view file, FileLoadStrategy load_strategy)
 
 auto get_file_meta_data(std::string_view file) -> std::optional<FileMetaData>
 {
-    HANDLE hFile = CreateFileA(file.data(), // NOLINT
+    HANDLE hFile = CreateFileA(file.data(), // NOLINT(bugprone-suspicious-stringview-data-usage)
                                GENERIC_READ,
                                FILE_SHARE_READ,
-                               NULL, // NOLINT
+                               NULL,
                                OPEN_EXISTING,
                                FILE_ATTRIBUTE_NORMAL,
-                               NULL); // NOLINT
+                               NULL);
     if (!SUCCEEDED(hFile))
     {
         return std::nullopt;
@@ -449,3 +451,5 @@ auto get_file_meta_data(std::string_view file) -> std::optional<FileMetaData>
 }
 
 } // namespace daedalus::fileio
+
+// NOLINTEND(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)

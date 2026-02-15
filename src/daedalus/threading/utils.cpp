@@ -1,8 +1,8 @@
-#include "daedalus/thread_utils.h"
+#include "daedalus/strings/utils.h"
 
-#include "daedalus/str_utils.h"
+#include "daedalus/threading/utils.h"
 
-namespace daedalus::thread_utils
+namespace daedalus::threading
 {
 
 #ifdef _WIN32
@@ -43,7 +43,7 @@ auto set_this_thread_logical_processor_affinity(std::span<uint16_t> target_logic
 
 auto set_thread_name(std::thread& thread, std::string_view name) -> bool
 {
-    HRESULT hResult = SetThreadDescription(thread.native_handle(), daedalus::str_utils::to_wide(name).c_str());
+    HRESULT hResult = SetThreadDescription(thread.native_handle(), daedalus::strings::to_wide(name).c_str());
     return SUCCEEDED(hResult);
 }
 
@@ -53,4 +53,4 @@ auto set_thread_name(std::thread& thread, std::string_view name) -> bool
 
 #endif
 
-} // namespace daedalus::thread_utils
+} // namespace daedalus::threading

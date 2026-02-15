@@ -1,9 +1,9 @@
 #ifndef DAEDALUS_CONTAINERS_STACK_ARRAY_H
 #define DAEDALUS_CONTAINERS_STACK_ARRAY_H
 
-#include "daedalus/attributes.h"
 #include "daedalus/containers/array_interface.h"
 #include "daedalus/containers/container_settings.h"
+#include "daedalus/core/attributes.h"
 
 namespace daedalus::containers
 {

@@ -1,4 +1,4 @@
-#include "daedalus/program.h"
+#include "daedalus/program/program.h"
 
 #include <iostream>
 

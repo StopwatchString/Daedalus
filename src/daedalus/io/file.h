@@ -1,11 +1,11 @@
-#ifndef DAEDALUS_FILE_IO_H
-#define DAEDALUS_FILE_IO_H
+#ifndef DAEDALUS_IO_FILE_H
+#define DAEDALUS_IO_FILE_H
 
 #include <functional>
 #include <optional>
 #include <string_view>
 
-namespace daedalus::fileio
+namespace daedalus::io
 {
 
 /**
@@ -133,6 +133,6 @@ auto free_file(File& file) -> void;
  */
 [[nodiscard]] auto is_usable_directory_path(std::string_view directory_path) -> bool;
 
-} // namespace daedalus::fileio
+} // namespace daedalus::io
 
 #endif

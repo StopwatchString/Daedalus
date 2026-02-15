@@ -1,11 +1,11 @@
-#ifndef DAEDALUS_THREAD_UTILS_H
-#define DAEDALUS_THREAD_UTILS_H
+#ifndef DAEDALUS_THREADING_UTILS_H
+#define DAEDALUS_THREADING_UTILS_H
 
 #include <span>
 #include <string_view>
 #include <thread>
 
-namespace daedalus::thread_utils
+namespace daedalus::threading
 {
 /**
  * @brief Attempts to set the logical processor affinity of the given thread.
@@ -47,6 +47,6 @@ auto set_this_thread_logical_processor_affinity(std::span<uint16_t> target_logic
  */
 auto set_thread_name(std::thread& thread, std::string_view name) -> bool;
 
-} // namespace daedalus::thread_utils
+} // namespace daedalus::threading
 
 #endif

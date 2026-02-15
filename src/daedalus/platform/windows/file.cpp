@@ -1,6 +1,6 @@
-#include "daedalus/fileio.h"
+#include "daedalus/io/file.h"
 
-#include "daedalus/math.h"
+#include "daedalus/math/math.h"
 
 #include <memory>
 #include <new>
@@ -14,7 +14,7 @@
 
 // NOLINTBEGIN(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)
 
-namespace daedalus::fileio
+namespace daedalus::io
 {
 
 namespace
@@ -450,6 +450,6 @@ auto get_file_meta_data(std::string_view file) -> std::optional<FileMetaData>
     };
 }
 
-} // namespace daedalus::fileio
+} // namespace daedalus::io
 
 // NOLINTEND(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)

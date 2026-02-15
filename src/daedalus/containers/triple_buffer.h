@@ -1,9 +1,12 @@
-#ifndef DAEDALUS_TRIPLE_BUFFER_H
-#define DAEDALUS_TRIPLE_BUFFER_H
+#ifndef DAEDALUS_CONTAINERS_TRIPLE_BUFFER_H
+#define DAEDALUS_CONTAINERS_TRIPLE_BUFFER_H
 
 #include <atomic>
 #include <new>
 #include <utility>
+
+namespace daedalus::containers
+{
 
 template <typename T>
 class TripleBuffer
@@ -163,5 +166,6 @@ class ZeroShareTripleBufferWriter
   private:
     ZeroShareTripleBuffer<T>& instance;
 };
+} // namespace daedalus::containers
 
 #endif

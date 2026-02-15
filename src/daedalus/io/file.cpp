@@ -1,10 +1,10 @@
-#include "daedalus/fileio.h"
+#include "daedalus/io/file.h"
 
 #include <filesystem>
 #include <new>
 #include <utility>
 
-namespace daedalus::fileio
+namespace daedalus::io
 {
 
 auto free_file(File& file) -> void
@@ -51,4 +51,4 @@ auto is_usable_directory_path(std::string_view directory_path) -> bool
     }
 }
 
-} // namespace daedalus::fileio
+} // namespace daedalus::io

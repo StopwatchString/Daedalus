@@ -1,5 +1,5 @@
-#ifndef DAEDALUS_MATH_H
-#define DAEDALUS_MATH_H
+#ifndef DAEDALUS_MATH_MATH_H
+#define DAEDALUS_MATH_MATH_H
 
 namespace daedalus::math
 {

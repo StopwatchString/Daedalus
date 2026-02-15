@@ -1,5 +1,5 @@
-#ifndef DAEDALUS_PROGRAM_H
-#define DAEDALUS_PROGRAM_H
+#ifndef DAEDALUS_PROGRAM_PROGRAM_H
+#define DAEDALUS_PROGRAM_PROGRAM_H
 
 #include <filesystem>
 #include <optional>

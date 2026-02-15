@@ -4,7 +4,6 @@
 #include "daedalus/containers/container_settings.h"
 
 #include <cstddef>
-#include <iterator>
 #include <memory>
 #include <type_traits>
 #include <utility>

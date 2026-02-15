@@ -1,6 +1,6 @@
-#include "daedalus/program.h"
+#include "daedalus/program/program.h"
 
-#include "daedalus/str_utils.h"
+#include "daedalus/strings/utils.h"
 
 #include <array>
 #include <cwchar>
@@ -33,13 +33,13 @@ auto get_environment() -> std::unordered_map<std::string, std::string>
     size_t length = p - environment_strings_wide;
 
     std::vector<std::wstring_view> environment_strs =
-        daedalus::str_utils::split_wide(environment_strings_wide, length, L'\0');
+        daedalus::strings::split_wide(environment_strings_wide, length, L'\0');
 
     for (std::wstring_view wstr : environment_strs)
     {
         if (wstr.length() > 1)
         {
-            std::string str = daedalus::str_utils::from_wide(wstr);
+            std::string str = daedalus::strings::from_wide(wstr);
             char* pos = reinterpret_cast<char*>(std::memchr(str.data() + 1, '=', str.length() - 1));
             if (pos != nullptr)
             {

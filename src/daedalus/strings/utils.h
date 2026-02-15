@@ -1,11 +1,11 @@
-#ifndef DAEDALUS_STR_UTILS_H
-#define DAEDALUS_STR_UTILS_H
+#ifndef DAEDALUS_STRINGS_UTILS_H
+#define DAEDALUS_STRINGS_UTILS_H
 
 #include <string>
 #include <string_view>
 #include <vector>
 
-namespace daedalus::str_utils
+namespace daedalus::strings
 {
 
 /**
@@ -84,6 +84,6 @@ namespace daedalus::str_utils
 
 #endif
 
-} // namespace daedalus::str_utils
+} // namespace daedalus::strings
 
 #endif

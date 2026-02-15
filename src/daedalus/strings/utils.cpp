@@ -1,4 +1,4 @@
-#include "daedalus/str_utils.h"
+#include "daedalus/strings/utils.h"
 
 #include <algorithm>
 #include <cctype>
@@ -11,7 +11,7 @@
 
 #endif
 
-namespace daedalus::str_utils
+namespace daedalus::strings
 {
 auto get_line(const char* str, size_t max_search_size, char delim) -> std::string_view
 {
@@ -106,4 +106,4 @@ auto split_wide(const wchar_t* buf, size_t size, wchar_t delim) -> std::vector<s
 
 #endif
 
-} // namespace daedalus::str_utils
+} // namespace daedalus::strings

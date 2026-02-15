@@ -10,29 +10,30 @@ set(DAEDALUS_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/stack_array.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/stack_vector.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/vector_interface.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/debugging/Lifetime.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/attributes.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/fileio.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/fileio.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/str_utils.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/str_utils.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/thread_utils.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/thread_utils.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/timer.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/timer.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/triple_buffer.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/triple_buffer.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/core/attributes.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/debugging/lifetime.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/io/file.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/io/file.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/math/math.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/profiling/timer.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/profiling/timer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program/program.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program/program.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/strings/utils.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/strings/utils.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/threading/utils.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/threading/utils.cpp
 )
 
 set(DAEDALUS_WINDOWS_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/fileio_windows.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program_windows.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/file.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/program.cpp
 )
 
 set(DAEDALUS_LINUX_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/fileio_linux.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program_linux.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/linux/file.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/linux/program.cpp
 )
 
 add_library(daedalus

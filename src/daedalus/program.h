@@ -1,6 +1,7 @@
 #ifndef DAEDALUS_PROGRAM_H
 #define DAEDALUS_PROGRAM_H
 
+#include <filesystem>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -17,6 +18,30 @@
 
 namespace daedalus::program
 {
+/**
+ * @brief A variety of useful meta information about a program.
+ */
+struct ProgramMeta
+{
+    std::vector<std::string_view> args;
+    std::unordered_map<std::string, std::string> environment;
+    std::filesystem::path working_directory;
+    std::filesystem::path executable_absolute_path;
+};
+
+/**
+ * @brief Fills a `ProgramMeta` struct and returns it.
+ *
+ * @note This function is meant to be called as the first line in your program in `main()`, to grab a bunch of useful
+ * information for you.
+ *
+ * @param argc The `argc` passed to `main()`
+ * @param argv The `argv1 passed to `main()`
+ *
+ * @return A `ProgramMeta` struct with all relevant info.
+ */
+[[nodiscard]] auto get_program_meta(int argc, char** argv) -> ProgramMeta;
+
 /**
  * @brief Retrieves a map of all environment variables in the program.
  *
@@ -36,6 +61,15 @@ namespace daedalus::program
  * @return A vector of string_views parsed from the arg list.
  */
 [[nodiscard]] auto parse_args(int argc, char** argv) -> std::vector<std::string_view>;
+
+/**
+ * @brief Gets the absolute path to the executable.
+ *
+ * @note This function has platform-specific behavior.
+ *
+ * @return The absolute path to the current executable.
+ */
+auto get_executable_path() -> std::filesystem::path;
 
 #ifdef _WIN32
 
@@ -67,22 +101,8 @@ struct WindowsError
  * @return A formatted string of the last Windows error.
  */
 [[nodiscard]] auto get_formatted_last_windows_error() -> std::string;
-
 #endif
 
 } // namespace daedalus::program
-
-#define DAEDALUS_MAIN
-#ifdef DAEDALUS_MAIN
-
-struct ProgramContext
-{
-    std::vector<std::string_view> args;
-    std::unordered_map<std::string, std::string> environment;
-};
-
-auto daedalus_main(ProgramContext program_context) -> int;
-
-#endif
 
 #endif

@@ -4,6 +4,18 @@
 
 namespace daedalus::program
 {
+auto get_program_meta(int argc, char** argv) -> ProgramMeta
+{
+    ProgramMeta meta{};
+
+    meta.args = parse_args(argc, argv);
+    meta.environment = get_environment();
+    meta.working_directory = std::filesystem::current_path();
+    meta.executable_absolute_path = get_executable_path();
+
+    return meta;
+}
+
 auto parse_args(int argc, char** argv) -> std::vector<std::string_view>
 {
     std::span<char*> args_span{argv, static_cast<std::size_t>(argc)};
@@ -16,17 +28,3 @@ auto parse_args(int argc, char** argv) -> std::vector<std::string_view>
     return args_vector;
 }
 } // namespace daedalus::program
-
-#ifdef DAEDALUS_MAIN
-
-auto main(int argc, char** argv) -> int
-{
-    ProgramContext program_context{};
-
-    program_context.args = daedalus::program::parse_args(argc, argv);
-    program_context.environment = daedalus::program::get_environment();
-
-    return daedalus_main(program_context);
-}
-
-#endif

@@ -14,6 +14,8 @@ set(DAEDALUS_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/attributes.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/fileio.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/fileio.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/str_utils.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/str_utils.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/thread_utils.h

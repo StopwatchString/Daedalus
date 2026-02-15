@@ -12,4 +12,10 @@ auto get_environment() -> std::unordered_map<std::string, std::string>
 
     return environment;
 }
+
+auto get_executable_path() -> std::filesystem::path
+{
+    return {};
+}
+
 } // namespace daedalus::program

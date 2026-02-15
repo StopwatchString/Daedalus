@@ -2,9 +2,9 @@
 
 #include "daedalus/str_utils.h"
 
+#include <array>
 #include <cwchar>
 #include <format>
-#include <iostream>
 #include <string>
 #include <string_view>
 
@@ -58,6 +58,13 @@ auto get_environment() -> std::unordered_map<std::string, std::string>
     }
 
     return environment;
+}
+
+auto get_executable_path() -> std::filesystem::path
+{
+    std::array<wchar_t, MAX_PATH> buffer;
+    GetModuleFileNameW(nullptr, buffer.data(), MAX_PATH);
+    return std::filesystem::path(buffer.data());
 }
 
 auto get_last_windows_error() -> WindowsError

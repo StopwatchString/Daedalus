@@ -14,7 +14,7 @@
 
 // NOLINTBEGIN(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)
 
-namespace daedalus::io
+namespace dae::io
 {
 
 namespace
@@ -284,7 +284,7 @@ auto load_file_safe_direct_disk(std::string_view file) -> std::optional<File>
     size_t file_alignment = maybe_file_alignment.value();
 
     // When NO_BUFFERING is specified, file size to work with has to be a multiple of the alignment.
-    file_size = daedalus::math::align_up(file_size, file_alignment);
+    file_size = dae::align_up(file_size, file_alignment);
 
     File f{
         .buffer = ::operator new(file_size, std::align_val_t(file_alignment)),
@@ -342,7 +342,7 @@ auto load_file_safe_direct_disk_async(std::string_view file)
     size_t file_alignment = maybe_file_alignment.value();
 
     // When NO_BUFFERING is specified, file size to work with has to be a multiple of the alignment.
-    file_size = daedalus::math::align_up(file_size, file_alignment);
+    file_size = dae::align_up(file_size, file_alignment);
 
     File f{
         .buffer = ::operator new(file_size, std::align_val_t(file_alignment)),
@@ -450,6 +450,6 @@ auto get_file_meta_data(std::string_view file) -> std::optional<FileMetaData>
     };
 }
 
-} // namespace daedalus::io
+} // namespace dae::io
 
 // NOLINTEND(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)

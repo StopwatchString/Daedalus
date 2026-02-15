@@ -10,7 +10,7 @@
 
 // NOLINTBEGIN(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)
 
-namespace daedalus::program
+namespace dae
 {
 auto get_environment() -> std::unordered_map<std::string, std::string>
 {
@@ -32,14 +32,13 @@ auto get_environment() -> std::unordered_map<std::string, std::string>
     }
     size_t length = p - environment_strings_wide;
 
-    std::vector<std::wstring_view> environment_strs =
-        daedalus::strings::split_wide(environment_strings_wide, length, L'\0');
+    std::vector<std::wstring_view> environment_strs = dae::strings::split_wide(environment_strings_wide, length, L'\0');
 
     for (std::wstring_view wstr : environment_strs)
     {
         if (wstr.length() > 1)
         {
-            std::string str = daedalus::strings::from_wide(wstr);
+            std::string str = dae::strings::from_wide(wstr);
             char* pos = reinterpret_cast<char*>(std::memchr(str.data() + 1, '=', str.length() - 1));
             if (pos != nullptr)
             {
@@ -114,4 +113,4 @@ auto get_formatted_last_windows_error() -> std::string
 
 // NOLINTEND(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)
 
-} // namespace daedalus::program
+} // namespace dae

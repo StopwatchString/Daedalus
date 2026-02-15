@@ -3,7 +3,7 @@
 
 // #include "daedalus/containers/array_interface.h"
 
-// namespace daedalus::containers
+// namespace dae
 // {
 
 // class vector_interface : public array_interface

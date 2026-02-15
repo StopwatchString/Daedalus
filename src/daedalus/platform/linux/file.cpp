@@ -1,8 +1,8 @@
-#include "daedalus/io/fileio.h"
+#include "daedalus/io/file.h"
 
 #include <iostream>
 
-namespace daedalus::io
+namespace dae::io
 {
 auto load_file(std::string_view file, FileLoadStrategy load_strategy) -> std::optional<File>
 {
@@ -22,4 +22,4 @@ auto get_file_meta_data(std::string_view file) -> std::optional<FileMetaData>
     std::cerr << "daedalus::fileio::get_file_meta_data() UNIMPLEMENTED ON LINUX \n";
     return std::nullopt;
 }
-} // namespace daedalus::io
+} // namespace dae::io

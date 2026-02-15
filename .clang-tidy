@@ -1,0 +1,16 @@
+Checks: >
+    bugprone-*,
+    cppcoreguidelines-*,
+    misc-*,
+    performance-*,
+    modernize-*
+
+CheckOptions:
+  - key: cppcoreguidelines-avoid-do-while.IgnoreMacros
+    value: 'true'
+  - key: cppcoreguidelines-avoid-non-const-global-variables.AllowInternalLinkage
+    value: 'true'
+
+WarningsAsErrors: ''
+HeaderFilterRegex: 'src/.*'
+FormatStyle: file

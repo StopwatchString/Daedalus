@@ -2,7 +2,7 @@
 
 #include <span>
 
-namespace daedalus::program
+namespace dae
 {
 auto get_program_meta(int argc, char** argv) -> ProgramMeta
 {
@@ -27,4 +27,4 @@ auto parse_args(int argc, char** argv) -> std::vector<std::string_view>
     }
     return args_vector;
 }
-} // namespace daedalus::program
+} // namespace dae

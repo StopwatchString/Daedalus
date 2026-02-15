@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-namespace daedalus::debugging
+namespace dae
 {
 
 template <size_t id = 0>
@@ -89,6 +89,6 @@ class LifetimeCounter
     }
 };
 
-} // namespace daedalus::debugging
+} // namespace dae
 
 #endif

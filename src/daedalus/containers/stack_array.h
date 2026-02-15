@@ -5,7 +5,7 @@
 #include "daedalus/containers/container_settings.h"
 #include "daedalus/core/attributes.h"
 
-namespace daedalus::containers
+namespace dae
 {
 
 template <typename T, size_t Capacity, ManagementMode MMode, auto... ValsForDefaultT>
@@ -160,6 +160,6 @@ using managed_stack_array = stack_array_impl<T, Capacity, ManagementMode::Manage
 template <typename T, size_t Capacity, auto... ValsForDefaultT>
 using safe_stack_array = stack_array_impl<T, Capacity, ManagementMode::ManagedWithBoundsChecks, ValsForDefaultT...>;
 
-} // namespace daedalus::containers
+} // namespace dae
 
 #endif

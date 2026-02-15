@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-namespace daedalus::containers
+namespace dae
 {
 
 enum class ManagementMode : uint8_t
@@ -17,6 +17,6 @@ enum class ManagementMode : uint8_t
     ManagedWithBoundsChecks = 2
 };
 
-} // namespace daedalus::containers
+} // namespace dae
 
 #endif

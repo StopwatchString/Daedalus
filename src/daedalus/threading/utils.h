@@ -5,7 +5,7 @@
 #include <string_view>
 #include <thread>
 
-namespace daedalus::threading
+namespace dae::threading
 {
 /**
  * @brief Attempts to set the logical processor affinity of the given thread.
@@ -47,6 +47,6 @@ auto set_this_thread_logical_processor_affinity(std::span<uint16_t> target_logic
  */
 auto set_thread_name(std::thread& thread, std::string_view name) -> bool;
 
-} // namespace daedalus::threading
+} // namespace dae::threading
 
 #endif

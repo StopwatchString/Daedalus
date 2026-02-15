@@ -3,7 +3,7 @@
 
 #include <chrono>
 
-namespace daedalus::profiling
+namespace dae
 {
 static constexpr double NANOSECONDS_PER_MICROSECOND = 1'000.0;
 static constexpr double NANOSECONDS_PER_MILLISECOND = 1'000'000.0;
@@ -88,6 +88,6 @@ class Resettable
     std::chrono::steady_clock::time_point start{};
 };
 
-} // namespace daedalus::profiling
+} // namespace dae
 
 #endif

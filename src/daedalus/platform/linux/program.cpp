@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace daedalus::program
+namespace dae
 {
 auto get_environment() -> std::unordered_map<std::string, std::string>
 {
@@ -18,4 +18,4 @@ auto get_executable_path() -> std::filesystem::path
     return {};
 }
 
-} // namespace daedalus::program
+} // namespace dae

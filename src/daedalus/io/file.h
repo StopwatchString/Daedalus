@@ -5,7 +5,7 @@
 #include <optional>
 #include <string_view>
 
-namespace daedalus::io
+namespace dae::io
 {
 
 /**
@@ -133,6 +133,6 @@ auto free_file(File& file) -> void;
  */
 [[nodiscard]] auto is_usable_directory_path(std::string_view directory_path) -> bool;
 
-} // namespace daedalus::io
+} // namespace dae::io
 
 #endif

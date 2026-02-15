@@ -5,7 +5,7 @@
 #include <string_view>
 #include <vector>
 
-namespace daedalus::strings
+namespace dae::strings
 {
 
 /**
@@ -84,6 +84,6 @@ namespace daedalus::strings
 
 #endif
 
-} // namespace daedalus::strings
+} // namespace dae::strings
 
 #endif

@@ -3,7 +3,7 @@
 
 // #include "daedalus/containers/vector_interface.h"
 
-// namespace daedalus::containers
+// namespace dae
 // {
 
 // class heap_vector : public vector_interface

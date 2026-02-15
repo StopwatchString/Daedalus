@@ -3,7 +3,7 @@
 
 // #include "daedalus/containers/array_interface.h"
 
-// namespace daedalus::containers
+// namespace dae
 // {
 
 // class heap_array : public array_interface

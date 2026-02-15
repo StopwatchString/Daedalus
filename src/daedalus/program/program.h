@@ -16,7 +16,7 @@
 
 #endif
 
-namespace daedalus::program
+namespace dae
 {
 /**
  * @brief A variety of useful meta information about a program.
@@ -103,6 +103,6 @@ struct WindowsError
 [[nodiscard]] auto get_formatted_last_windows_error() -> std::string;
 #endif
 
-} // namespace daedalus::program
+} // namespace dae
 
 #endif

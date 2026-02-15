@@ -4,7 +4,7 @@
 #include <new>
 #include <utility>
 
-namespace daedalus::io
+namespace dae::io
 {
 
 auto free_file(File& file) -> void
@@ -51,4 +51,4 @@ auto is_usable_directory_path(std::string_view directory_path) -> bool
     }
 }
 
-} // namespace daedalus::io
+} // namespace dae::io

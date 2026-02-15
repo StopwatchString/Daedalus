@@ -5,7 +5,7 @@
 #include <new>
 #include <utility>
 
-namespace daedalus::containers
+namespace dae
 {
 
 template <typename T>
@@ -166,6 +166,6 @@ class ZeroShareTripleBufferWriter
   private:
     ZeroShareTripleBuffer<T>& instance;
 };
-} // namespace daedalus::containers
+} // namespace dae
 
 #endif

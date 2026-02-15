@@ -8,7 +8,7 @@
 #include <type_traits>
 #include <utility>
 
-namespace daedalus::containers
+namespace dae
 {
 
 /**
@@ -538,6 +538,6 @@ class array_interface
     // static_assert(std::input_iterator<iterator_impl<false>>, "Not a valid input_iterator!");
 };
 
-} // namespace daedalus::containers
+} // namespace dae
 
 #endif

@@ -229,7 +229,7 @@ A collection of tools to retrieve meta information about your program and the en
 
 ## Strings
 
-### Utils {#string-utils}
+### String Utils
 
 `#include "daedalus/strings/utils.h"`
 
@@ -246,7 +246,7 @@ Includes a bunch of core string utilities that make working with strings and fil
 
 ## Threading
 
-### Utils {#thread-utils}
+### Thread Utils
 
 `#include "daedalus/threading/utils.h"`
 

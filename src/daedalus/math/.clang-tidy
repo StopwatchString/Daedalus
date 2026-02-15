@@ -1,0 +1,6 @@
+# Math-specific .clang-tidy
+# Inherits from parent config, disables checks for things that interfere with numerical code
+InheritParentConfig: true
+
+Checks: >
+  -cppcoreguidelines-avoid-magic-numbers

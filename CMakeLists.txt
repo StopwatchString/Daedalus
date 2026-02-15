@@ -15,7 +15,9 @@ set(DAEDALUS_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/debugging/lifetime.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/io/file.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/io/file.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/math/easing.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/math/math.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/math/smoothvalue.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/profiling/timer.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/profiling/timer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program/program.h

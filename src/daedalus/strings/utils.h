@@ -21,7 +21,7 @@ namespace dae::strings
  *
  * @return A std::string_view of the first line encountered.
  */
-[[nodiscard]] auto get_line_wide(const char* str, size_t max_search_size, char delim) -> std::string_view;
+[[nodiscard]] auto get_line(const char* str, size_t max_search_size, char delim) -> std::string_view;
 
 /**
  * @brief Splits a char buffer into a vector of string_views based on a given delimiter.

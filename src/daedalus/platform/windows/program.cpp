@@ -8,8 +8,6 @@
 #include <string>
 #include <string_view>
 
-// NOLINTBEGIN(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)
-
 namespace dae
 {
 auto get_environment() -> std::unordered_map<std::string, std::string>
@@ -110,7 +108,5 @@ auto get_formatted_last_windows_error() -> std::string
                        windows_error.code,
                        windows_error.message.value_or("Unknown Error"));
 }
-
-// NOLINTEND(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)
 
 } // namespace dae

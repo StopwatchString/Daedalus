@@ -12,8 +12,6 @@
 #include <fstream>
 #include <functional>
 
-// NOLINTBEGIN(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)
-
 namespace dae::io
 {
 
@@ -451,5 +449,3 @@ auto get_file_meta_data(std::string_view file) -> std::optional<FileMetaData>
 }
 
 } // namespace dae::io
-
-// NOLINTEND(modernize-use-nullptr,cppcoreguidelines-pro-type-reinterpret-cast)

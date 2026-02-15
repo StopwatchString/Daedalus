@@ -1,0 +1,9 @@
+# Windows-specific .clang-tidy
+# Inherits from parent config, disables checks for things that are common when working with Windows API
+InheritParentConfig: true
+
+Checks: >
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+  -modernize-use-nullptr,
+  -bugprone-not-null-terminated-result,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic

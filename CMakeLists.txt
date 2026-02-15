@@ -20,8 +20,8 @@ set(DAEDALUS_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/math/smoothvalue.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/profiling/timer.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/profiling/timer.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program/program.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program/program.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program/meta.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/program/meta.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/strings/utils.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/strings/utils.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/threading/utils.h
@@ -29,8 +29,8 @@ set(DAEDALUS_SOURCES
 )
 
 set(DAEDALUS_WINDOWS_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/file.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/program.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/io/file.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/program/meta.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/selectors.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/selectors.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/terminal.h
@@ -38,8 +38,8 @@ set(DAEDALUS_WINDOWS_SOURCES
 )
 
 set(DAEDALUS_LINUX_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/linux/file.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/linux/program.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/linux/io/file.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/linux/program/meta.cpp
 )
 
 add_library(daedalus
@@ -58,3 +58,6 @@ target_include_directories(daedalus
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
+
+# Library name alias
+add_library(daedalus::daedalus ALIAS daedalus)

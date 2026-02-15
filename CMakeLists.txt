@@ -29,6 +29,10 @@ set(DAEDALUS_SOURCES
 set(DAEDALUS_WINDOWS_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/file.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/program.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/selectors.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/selectors.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/terminal.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/platform/windows/terminal.cpp
 )
 
 set(DAEDALUS_LINUX_SOURCES

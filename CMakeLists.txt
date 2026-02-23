@@ -4,6 +4,8 @@ project(Daedalus LANGUAGES CXX)
 
 set(DAEDALUS_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/array_interface.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/FunctionStack.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/FunctionStack.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/heap_array.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/heap_vector.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/daedalus/containers/hybrid_vector.h

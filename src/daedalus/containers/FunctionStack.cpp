@@ -1,5 +1,7 @@
 #include "daedalus/containers/FunctionStack.h"
 
+#include <ranges>
+
 namespace dae
 {
 auto FunctionStack::size() const -> size_t
@@ -7,7 +9,7 @@ auto FunctionStack::size() const -> size_t
     return functions.size();
 }
 
-auto FunctionStack::push(const std::function<void()>& function)
+auto FunctionStack::push(const std::function<void()>& function) -> void
 {
     functions.push_back(function);
 }
@@ -31,16 +33,17 @@ auto FunctionStack::clear() -> void
 
 auto FunctionStack::execute_last_in_first_out() -> void
 {
-    for (size_t i = functions.size() - 1; i >= 0; i--)
+    for (std::function<void()>& f : functions | std::views::reverse)
     {
-        functions[i]();
+        f();
     }
 }
+
 auto FunctionStack::execute_first_in_first_out() -> void
 {
-    for (size_t i = 0; i < functions.size(); i++)
+    for (std::function<void()>& f : functions)
     {
-        functions[i]();
+        f();
     }
 }
 } // namespace dae
